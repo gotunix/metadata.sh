@@ -30,11 +30,11 @@ A git-first metadata engine for tracking tasks, stories, milestones, and impleme
 
 ## Recommended Workflow: Orphan Branch & Worktree
 
-To keep your metadata history separate from your source code history while keeping them in the same repository, we recommend using an **orphan branch**.
+To keep your project history clean and avoid cluttering your main branch with metadata files, we recommend using an **orphan branch**. This allows you to store all your tasks and plans in the same repository but on a completely independent timeline.
 
 ### 1. Create the Orphan Branch
 
-This creates a branch with no history and initializes the metadata structure.
+This creates a branch with no parent history and initializes the metadata structure.
 
 ```bash
 git checkout --orphan metadata
@@ -48,7 +48,7 @@ git checkout main
 
 ### 2. Add as a Worktree
 
-This allows you to have the `metadata` branch checked out in a subdirectory of your `main` branch.
+To make management easy, you can add the `metadata` branch as a **git worktree** inside your main codebase. This allows you to have the metadata directory available without switching branches.
 
 ```bash
 git worktree add metadata metadata
@@ -56,22 +56,24 @@ git worktree add metadata metadata
 
 ### 3. Ignore the Worktree
 
-Add the metadata directory to your `.gitignore` so it isn't tracked as part of your main branch.
+You must add the `metadata/` directory to your `.gitignore` file.
 
+**Why?**
+A git worktree is a separate checkout. If you don't ignore it, your main branch will see the `metadata/` folder as a collection of "untracked files". Ignoring it keeps your `git status` clean and ensures that metadata commits are kept strictly on the `metadata` branch.
+
+**How?**
 ```bash
 echo "metadata/" >> .gitignore
 ```
 
-### 4. Use the Script from the Worktree
+### 4. Running the Script
 
-Because the script manages data relative to its own location, you should run it from within the `metadata/` directory:
+Because the script manages data relative to its own location, you simply run it from within the `metadata/` directory. This ensures all JSON and Markdown files are created and updated within that worktree.
 
 ```bash
 cd metadata/
 ../metadata.sh dashboard
 ```
-
-Alternatively, you can keep a copy of `metadata.sh` directly inside the `metadata` branch.
 
 ## License
 
