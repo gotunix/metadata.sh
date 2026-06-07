@@ -62,16 +62,16 @@ Add the metadata directory to your `.gitignore` so it isn't tracked as part of y
 echo "metadata/" >> .gitignore
 ```
 
-### 4. Configure the Script
+### 4. Use the Script from the Worktree
 
-When running `metadata.sh` from your root, point it to the worktree using the `METADATA_DIR` environment variable:
+Because the script manages data relative to its own location, you should run it from within the `metadata/` directory:
 
 ```bash
-export METADATA_DIR=./metadata
-./metadata.sh dashboard
+cd metadata/
+../metadata.sh dashboard
 ```
 
-Alternatively, you can place a copy of `metadata.sh` inside the `metadata/` directory and run it from there.
+Alternatively, you can keep a copy of `metadata.sh` directly inside the `metadata` branch.
 
 ## License
 
