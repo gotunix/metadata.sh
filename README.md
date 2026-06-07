@@ -34,11 +34,13 @@ To keep your project history clean and avoid cluttering your main branch with me
 
 ### 1. Create the Orphan Branch
 
-This creates a branch with no parent history and initializes the metadata structure.
+This creates a branch with no parent history and initializes the metadata structure. We also include the script itself so it can manage the data on this branch.
 
 ```bash
 git checkout --orphan metadata
 git rm -rf .
+# Add the script to this branch
+cp ../metadata.sh . 
 mkdir tasks milestones stories plans
 touch tasks/.gitkeep milestones/.gitkeep stories/.gitkeep plans/.gitkeep
 git add .
@@ -59,7 +61,7 @@ git worktree add metadata metadata
 You must add the `metadata/` directory to your `.gitignore` file.
 
 **Why?**
-A git worktree is a separate checkout. If you don't ignore it, your main branch will see the `metadata/` folder as a collection of "untracked files". Ignoring it keeps your `git status` clean and ensures that metadata commits are kept strictly on the `metadata` branch.
+A git worktree is a separate checkout. If you don't ignore it, your main branch will see the `metadata/` folder as a collection of "untracked files". Ignoring it keeps your `git status` clean and ensures that metadata commits (tasks, plans, etc.) are kept strictly on the `metadata` branch.
 
 **How?**
 ```bash
@@ -68,11 +70,11 @@ echo "metadata/" >> .gitignore
 
 ### 4. Running the Script
 
-Because the script manages data relative to its own location, you simply run it from within the `metadata/` directory. This ensures all JSON and Markdown files are created and updated within that worktree.
+Because the script manages data relative to its own location, you simply run it from within the `metadata/` directory:
 
 ```bash
 cd metadata/
-../metadata.sh dashboard
+./metadata.sh dashboard
 ```
 
 ## License
