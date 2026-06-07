@@ -77,6 +77,16 @@ cd metadata/
 ./metadata.sh dashboard
 ```
 
+## Shell Aliases
+
+To speed up your workflow, you can add aliases to your `.zshrc` or `.bashrc`. We have provided a comprehensive list of examples in [aliases.txt](aliases.txt).
+
+Example:
+```bash
+alias mtd='metadata.sh dashboard'
+mtd
+```
+
 ## License
 
 BSD 3-Clause License. See `LICENSE` for details.

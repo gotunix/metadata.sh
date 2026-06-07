@@ -1,0 +1,41 @@
+# metadata.sh Aliases
+# Add these to your .zshrc or .bashrc to speed up your workflow.
+#
+# Note: These assume 'metadata.sh' is in your PATH. 
+# If it is not, replace 'metadata.sh' with the full path to the script.
+
+alias mt='metadata.sh'
+
+# --- Tasks ---
+alias mtc='metadata.sh task-create'
+alias mte='metadata.sh task-edit'
+alias mts='metadata.sh task-status'
+alias mtv='metadata.sh task-view'
+
+# --- Milestones ---
+alias mtmc='metadata.sh milestone-create'
+alias mtme='metadata.sh milestone-edit'
+alias mtms='metadata.sh milestone-status'
+alias mtmv='metadata.sh milestone-view'
+
+# --- Stories ---
+alias mtsc='metadata.sh story-create'
+alias mtse='metadata.sh story-edit'
+alias mtss='metadata.sh story-status'
+alias mtsv='metadata.sh story-view'
+
+# --- Plans ---
+alias mtpc='metadata.sh plan-create'
+alias mtpe='metadata.sh plan-edit'
+alias mtpv='metadata.sh plan-view'
+
+# --- Utilities ---
+alias mtl='metadata.sh link'
+alias mtb='metadata.sh backlog'
+alias mtd='metadata.sh dashboard'
+alias mtch='metadata.sh changelog'
+
+# Example Usage:
+# mtc "Fix bug" "bug-1" "HIGH" "FIX"
+# mtd
+# mtms "v1.0" "COMPLETED"
