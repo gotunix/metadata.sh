@@ -3,10 +3,12 @@
 # --- CONFIGURATION ---
 # Resolve the directory where the script is located
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-TASKS_DIR="$SCRIPT_DIR/tasks"
-MILESTONES_DIR="$SCRIPT_DIR/milestones"
-STORIES_DIR="$SCRIPT_DIR/stories"
-PLANS_DIR="$SCRIPT_DIR/plans"
+# Use METADATA_DIR if set, otherwise fallback to script directory
+BASE_DIR="${METADATA_DIR:-$SCRIPT_DIR}"
+TASKS_DIR="$BASE_DIR/tasks"
+MILESTONES_DIR="$BASE_DIR/milestones"
+STORIES_DIR="$BASE_DIR/stories"
+PLANS_DIR="$BASE_DIR/plans"
 
 # Ensure core directories exist
 mkdir -p "$TASKS_DIR" "$MILESTONES_DIR" "$STORIES_DIR" "$PLANS_DIR"
